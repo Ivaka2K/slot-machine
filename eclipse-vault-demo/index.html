@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Eclipse Vault - interactive university coursework demo." />
+    <title>Eclipse Vault | Coursework Demo</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="auth.css" />
+    <link rel="stylesheet" href="game-ui.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section id="lobby" class="lobby-screen" aria-labelledby="lobby-title">
+        <nav class="top-nav" aria-label="Main navigation">
+          <div class="brand-lockup"><span class="mini-eclipse" aria-hidden="true"></span><span>ECLIPSE VAULT</span></div>
+          <span class="demo-badge">UNIVERSITY DEMO · CREDITS ONLY</span>
+          <div class="account-actions"><span id="accountLabel" class="account-label">GUEST</span><button id="accountButton" class="text-button">SIGN IN</button><button id="logoutButton" class="text-button hidden">LOG OUT</button><button class="text-button" data-open="presentation">PROJECT PRESENTATION</button></div>
+        </nav>
+        <div class="lobby-hero">
+          <div class="hero-copy">
+            <p class="eyebrow">PREMIUM COSMIC SLOT</p>
+            <h1 id="lobby-title">Unlock the Light<br />Beyond the Dark.</h1>
+            <p class="hero-lede">Discover an ancient cosmic Vault in an interactive 5×3 demo prototype with 20 fixed paylines and Free Spins Totality Mode.</p>
+            <div class="hero-actions">
+              <button id="launchGame" class="primary-button">PLAY DEMO <span aria-hidden="true">→</span></button>
+              <button class="secondary-button" data-open="presentation">PROJECT PRESENTATION</button>
+            </div>
+            <p class="responsible-note">For academic demonstration only. No real money, deposits, or prizes.</p>
+          </div>
+          <div class="hero-art" aria-label="Eclipse Vault promotional artwork">
+            <img src="assets/eclipse_vault/promo_thumbnail.png" alt="Eclipse Vault promotional artwork" />
+            <div class="hero-art-caption">5 REELS · 3 ROWS · 20 FIXED PAYLINES</div>
+          </div>
+        </div>
+        <section class="game-card" aria-label="Eclipse Vault game in the catalogue">
+          <img src="assets/eclipse_vault/logo_eclipse_vault.png" alt="Eclipse Vault logo" />
+          <div><p class="eyebrow">FEATURED TITLE</p><h2>Eclipse Vault</h2><p>Cosmic vault · High volatility concept · Free Spins</p></div>
+          <button id="launchGameCard" class="secondary-button">OPEN GAME</button>
+        </section>
+      </section>
+
+      <section id="game" class="game-screen hidden" aria-label="Eclipse Vault interactive game">
+        <header class="game-header">
+          <button id="backToLobby" class="icon-button" title="Back to lobby" aria-label="Back to lobby">‹</button>
+          <div class="game-brand"><span class="mini-eclipse" aria-hidden="true"></span><span>ECLIPSE VAULT</span><small id="modeLabel">BASE GAME</small></div>
+          <div class="header-controls">
+            <button id="soundToggle" class="icon-button" title="Sound on" aria-label="Sound on" aria-pressed="true"><svg class="sound-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4h4l5 4V6L8 10H4Z"/><path d="M16 9.5a4 4 0 0 1 0 5M18.5 7a7.5 7.5 0 0 1 0 10"/></svg></button>
+            <button class="icon-button" data-open="rules" title="Paytable and rules">i</button>
+            <button class="icon-button" data-open="presentation" title="Presentation">▣</button>
+          </div>
+        </header>
+
+        <div class="game-layout">
+          <aside class="left-panel">
+            <p class="panel-label">DEMO BALANCE</p>
+            <strong id="balance" class="balance">1,000.00</strong><span class="credits">CREDITS</span>
+            <div class="divider"></div>
+            <p class="panel-label">LAST RESULT</p>
+            <strong id="lastWin">0.00</strong><span class="credits">CREDITS</span>
+            <div class="divider"></div>
+            <button id="featurePreview" class="outline-button">FEATURE PREVIEW</button>
+            <button class="outline-button" data-open="rules">PAYTABLE & RULES</button>
+          </aside>
+
+          <section class="reel-stage" aria-live="polite">
+            <div class="totality-bar" id="featureBar" hidden>
+              <span>TOTALITY MODE</span>
+              <strong><span id="freeSpinsLeft">0</span> FREE SPINS LEFT</strong>
+              <strong>×<span id="multiplier">1</span> ECLIPSE MULTIPLIER</strong>
+            </div>
+            <div class="stage-title">
+              <div><p id="statusKicker" class="eyebrow">THE VAULT AWAITS</p><h2 id="statusText">Select your stake and spin.</h2></div>
+              <button id="lineInfo" class="line-badge" title="20 fixed paylines">20 LINES</button>
+            </div>
+            <div id="reelFrame" class="reel-frame">
+              <div class="eclipse-halo" aria-hidden="true"></div>
+              <div id="reels" class="reels" aria-label="5 columns with 3 symbols each"></div>
+              <div id="spinVeil" class="spin-veil" aria-hidden="true">THE WHEEL TURNS</div>
+            </div>
+            <div id="winBreakdown" class="win-breakdown">READY FOR A DEMO SPIN</div>
+            <div class="feature-actions">
+              <button id="buyBonusButton" class="buy-bonus-button">BUY BONUS <span id="buyBonusPrice">40× STAKE</span><small>3 SCATTER · DEMO FEATURE</small></button>
+            </div>
+          </section>
+
+          <aside class="right-panel">
+            <p class="panel-label">SCATTER COUNT</p>
+            <div class="charge-orb" aria-label="Scatter count"><span id="chargeValue">0</span><small>/ 3</small></div>
+            <p class="side-copy">Only Scatter Lightning symbols are counted. Three or more Scatters unlock Free Spins.</p>
+            <div class="divider"></div>
+            <p class="side-copy">Server-side RNG, wallet, and KYC are outside the scope of this local prototype.</p>
+          </aside>
+        </div>
+
+        <footer class="control-deck">
+          <div class="stake-control">
+            <span class="control-label">LINE BET</span>
+            <div class="stepper"><button id="betDown" aria-label="Decrease line bet">−</button><strong id="lineBet">1.00</strong><button id="betUp" aria-label="Increase line bet">+</button></div>
+            <small>20 fixed lines</small>
+          </div>
+          <div class="win-control"><span class="control-label">WIN</span><strong id="winDisplay">0.00</strong><small>CREDITS</small></div>
+          <button id="spinButton" class="spin-button"><span id="spinLabel">SPIN</span><small id="stakeLabel">STAKE 20.00</small></button>
+          <div class="deck-actions"><button class="text-button" data-open="rules">INFO</button><button id="resetDemo" class="text-button">RESET DEMO</button></div>
+        </footer>
+        <div class="rg-strip">18+ · DEMO CREDITS ONLY · Play for entertainment · <button data-open="rules">Rules & responsible play</button></div>
+      </section>
+    </main>
+
+    <div id="modalRoot" class="modal-root" aria-hidden="true">
+      <div class="modal-backdrop" data-close-modal></div>
+      <section id="rulesModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="rulesTitle">
+        <button class="modal-close" data-close-modal aria-label="Close">×</button>
+        <p class="eyebrow">ECLIPSE VAULT · GAME INFORMATION</p>
+        <h2 id="rulesTitle">Paytable and rules</h2>
+        <div class="modal-columns">
+          <div><h3>Game configuration</h3><p>5 reels × 3 rows · 20 fixed paylines. Payouts are paid left-to-right. Line bet × 20 = total stake.</p><h3>Wild and Scatter</h3><p><b>Wild Solar Crown</b> substitutes all regular symbols but not Scatter. <b>Scatter Eclipse Gate</b> pays no line award and triggers Free Spins anywhere on the grid.</p><h3>Free Spins</h3><p>3 / 4 / 5 Scatter award 8 / 12 / 16 Free Spins. A Wild increases the multiplier for the next free spin, up to 5×. 3+ Scatter retrigger +4 spins; awarded spins cap: 30.</p><h3>Buy Bonus demo option</h3><p>Buy Bonus costs 40× total stake in demo credits, shows exactly 3 Scatter and starts 8 Free Spins. It is a prototype-only assumption; a commercial version requires separate RTP and compliance validation.</p></div>
+          <div><h3>Paytable per 1.00 line bet</h3><div id="paytable" class="paytable"></div><p class="muted">This local demo executes the same visible reel-strip logic as the coursework model. Full RTP remains a simulated coursework estimate, not a certified value.</p></div>
+        </div>
+      </section>
+
+      <section id="presentationModal" class="modal presentation-modal hidden" role="dialog" aria-modal="true" aria-labelledby="presentationTitle">
+        <button class="modal-close" data-close-modal aria-label="Close">×</button>
+        <p class="eyebrow">UNIVERSITY COURSEWORK · 10 MINUTE OVERVIEW</p>
+        <h2 id="presentationTitle">Eclipse Vault presentation mode</h2>
+        <div class="presentation-grid">
+          <article><span>01</span><h3>Brand</h3><p>Premium cosmic vault theme in obsidian, antique gold and deep indigo.</p></article>
+          <article><span>02</span><h3>Game</h3><p>5×3, 20 fixed paylines, Wild Solar Crown and Scatter Eclipse Gate.</p></article>
+          <article><span>03</span><h3>Mathematics</h3><p>Defined 36-stop reel strips, published paytable and reproducible browser demo logic.</p></article>
+          <article><span>04</span><h3>Architecture</h3><p>Provider game client; operator wallet, KYC and Responsible Gaming services.</p></article>
+          <article><span>05</span><h3>Protection</h3><p>No real-money mechanics in this prototype; transparent rules and demo-only credits.</p></article>
+          <article><span>06</span><h3>How to demonstrate</h3><p>Open game, show a base spin, inspect paytable, then use Feature Preview for the Totality screen.</p></article>
+        </div>
+      </section>
+
+      <section id="authModal" class="modal auth-modal hidden" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+        <button class="modal-close" data-close-modal aria-label="Close">×</button>
+        <p class="eyebrow">DEMO ACCOUNT</p>
+        <h2 id="authTitle">Save your demo wallet</h2>
+        <p class="muted">Accounts are local to this server. Demo credits have no monetary value.</p>
+        <p id="authMessage" class="auth-message" aria-live="polite"></p>
+        <div class="auth-grid">
+          <form id="loginForm" class="auth-form">
+            <h3>Sign in</h3>
+            <label>Username <input id="loginUsername" name="username" autocomplete="username" required /></label>
+            <label>Password <input id="loginPassword" name="password" type="password" autocomplete="current-password" required /></label>
+            <button class="primary-button" type="submit">SIGN IN</button>
+          </form>
+          <form id="registerForm" class="auth-form">
+            <h3>Create account</h3>
+            <label>Username <input id="registerUsername" name="username" minlength="3" maxlength="24" autocomplete="username" required /></label>
+            <label>Password <input id="registerPassword" name="password" type="password" minlength="8" autocomplete="new-password" required /></label>
+            <button class="secondary-button" type="submit">CREATE ACCOUNT</button>
+          </form>
+        </div>
+      </section>
+
+      <section id="featureModal" class="modal feature-modal hidden" role="dialog" aria-modal="true" aria-labelledby="featureTitle">
+        <button class="modal-close" data-close-modal aria-label="Close">×</button>
+        <p class="eyebrow">PRESENTATION-ONLY VISUAL PREVIEW</p>
+        <h2 id="featureTitle">Totality Mode</h2>
+        <img src="assets/eclipse_vault/background_free_spins.png" alt="Free Spins Totality Mode background" />
+        <p>In a real game, Totality Mode starts only after 3+ Scatters in an RNG outcome. This screen does not activate a bonus or change the balance; it exists only to present the visual design.</p>
+        <button class="primary-button" data-close-modal>CLOSE PREVIEW</button>
+      </section>
+
+      <section id="bonusStartModal" class="modal bonus-modal bonus-entry-modal hidden" role="dialog" aria-modal="true" aria-labelledby="bonusStartTitle">
+        <div class="bonus-portal" aria-hidden="true"><span class="portal-ring portal-ring-outer"></span><span class="portal-ring portal-ring-inner"></span><img src="assets/eclipse_vault/symbol_scatter_eclipse_gate.png" alt="" /></div>
+        <p class="eyebrow">ECLIPSE GATE OPENED</p>
+        <h2 id="bonusStartTitle">TOTALITY MODE UNLOCKED</h2>
+        <p class="bonus-message"><strong id="bonusAward">8</strong><span>FREE SPINS</span></p>
+        <p class="bonus-entry-copy">The Scatter Lightning has opened the vault. Wild Solar Crown raises the multiplier during the feature.</p>
+        <button id="beginFreeSpins" class="primary-button">ENTER TOTALITY MODE</button>
+      </section>
+
+      <section id="bonusSummaryModal" class="modal bonus-modal hidden" role="dialog" aria-modal="true" aria-labelledby="bonusSummaryTitle">
+        <div class="bonus-eclipse completed" aria-hidden="true"></div>
+        <p class="eyebrow">TOTALITY MODE COMPLETE</p>
+        <h2 id="bonusSummaryTitle">Free Spins complete</h2>
+        <p class="bonus-message">Bonus game win</p>
+        <strong id="bonusWinAmount" class="bonus-win">0.00</strong><span class="credits"> CREDITS</span>
+        <p id="bonusSpinsPlayed" class="muted">Free Spins played: 0</p>
+        <button id="finishBonus" class="primary-button">RETURN TO BASE GAME</button>
+      </section>
+    </div>
+    <script src="game.js"></script>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "eclipse-vault-demo",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Eclipse Vault demo with a local game backend",
+  "scripts": {
+    "start": "node server.js",
+    "generate-audio": "node tools/generate-audio.js",
+    "math": "node tools/math-model.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^9.4.5"
+  }
+}

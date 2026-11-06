@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="820" viewBox="0 0 1400 820" role="img" aria-labelledby="title description">
+  <title id="title">Eclipse Vault frontend architecture</title>
+  <desc id="description">A diagram showing the browser frontend, its assets and audio, and its API connection to the Node game server.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#090b19"/>
+      <stop offset="1" stop-color="#15113a"/>
+    </linearGradient>
+    <linearGradient id="client" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1b1a44"/>
+      <stop offset="1" stop-color="#101a35"/>
+    </linearGradient>
+    <linearGradient id="server" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#38265b"/>
+      <stop offset="1" stop-color="#1b1532"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000" flood-opacity=".35"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d3ad61"/>
+    </marker>
+    <style>
+      .title { font-family: Arial, sans-serif; fill: #f6edcf; font-weight: 700; }
+      .subtitle { font-family: Arial, sans-serif; fill: #b9bad1; }
+      .label { font-family: Arial, sans-serif; fill: #d3ad61; font-size: 14px; font-weight: 700; letter-spacing: 1.8px; }
+      .box-title { font-family: Arial, sans-serif; fill: #fff9e9; font-size: 20px; font-weight: 700; }
+      .box-copy { font-family: Arial, sans-serif; fill: #c9cce0; font-size: 14px; }
+      .detail { font-family: Arial, sans-serif; fill: #9fa5c4; font-size: 13px; }
+      .line { fill: none; stroke: #d3ad61; stroke-width: 2.5; marker-end: url(#arrow); }
+      .line-muted { fill: none; stroke: #777caa; stroke-width: 2; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="1400" height="820" fill="url(#bg)"/>
+  <circle cx="1260" cy="100" r="180" fill="#413179" opacity=".18"/>
+  <circle cx="130" cy="730" r="230" fill="#244576" opacity=".13"/>
+
+  <text x="70" y="68" class="title" font-size="34">ECLIPSE VAULT</text>
+  <text x="70" y="99" class="subtitle" font-size="18">Frontend architecture - current implementation</text>
+
+  <rect x="55" y="145" width="910" height="590" rx="24" fill="url(#client)" stroke="#3e4271" stroke-width="2" filter="url(#shadow)"/>
+  <text x="90" y="190" class="label">BROWSER CLIENT</text>
+  <text x="90" y="220" class="subtitle" font-size="16">Responsive UI, interaction logic, audio playback and API communication</text>
+
+  <rect x="95" y="270" width="240" height="155" rx="16" fill="#242456" stroke="#565c9a" stroke-width="1.5"/>
+  <text x="120" y="310" class="box-title">index.html</text>
+  <text x="120" y="342" class="box-copy">Screen structure</text>
+  <text x="120" y="365" class="detail">Lobby, game view, rules</text>
+  <text x="120" y="386" class="detail">and bonus modals</text>
+
+  <rect x="390" y="245" width="260" height="205" rx="16" fill="#332958" stroke="#aa8dd2" stroke-width="1.5"/>
+  <text x="415" y="290" class="box-title">game.js</text>
+  <text x="415" y="322" class="box-copy">Application controller</text>
+  <text x="415" y="348" class="detail">Renders server outcomes</text>
+  <text x="415" y="370" class="detail">Handles input and UI state</text>
+  <text x="415" y="392" class="detail">Calls the game API</text>
+  <text x="415" y="414" class="detail">Plays WAV sound effects</text>
+
+  <rect x="705" y="270" width="220" height="155" rx="16" fill="#242456" stroke="#565c9a" stroke-width="1.5"/>
+  <text x="730" y="310" class="box-title">styles.css</text>
+  <text x="730" y="342" class="box-copy">Visual system</text>
+  <text x="730" y="365" class="detail">Responsive layout</text>
+  <text x="730" y="386" class="detail">Reel and modal animation</text>
+
+  <rect x="180" y="520" width="265" height="155" rx="16" fill="#1d314e" stroke="#4072a3" stroke-width="1.5"/>
+  <text x="205" y="560" class="box-title">assets/</text>
+  <text x="205" y="592" class="box-copy">Visual resources</text>
+  <text x="205" y="615" class="detail">Symbols, logo, backgrounds</text>
+  <text x="205" y="636" class="detail">and promotional artwork</text>
+
+  <rect x="560" y="520" width="265" height="155" rx="16" fill="#1d314e" stroke="#4072a3" stroke-width="1.5"/>
+  <text x="585" y="560" class="box-title">audio/</text>
+  <text x="585" y="592" class="box-copy">WAV sound effects</text>
+  <text x="585" y="615" class="detail">Spin, reel stop, win</text>
+  <text x="585" y="636" class="detail">and bonus sounds</text>
+
+  <path d="M335 348 H390" class="line-muted"/>
+  <path d="M650 348 H705" class="line-muted"/>
+  <path d="M505 450 V495 H312 V520" class="line-muted"/>
+  <path d="M535 450 V495 H692 V520" class="line-muted"/>
+
+  <rect x="1020" y="245" width="325" height="430" rx="24" fill="url(#server)" stroke="#765c9e" stroke-width="2" filter="url(#shadow)"/>
+  <text x="1055" y="290" class="label">SERVICE BOUNDARY</text>
+  <rect x="1055" y="325" width="255" height="130" rx="16" fill="#34204f" stroke="#a47ac6" stroke-width="1.5"/>
+  <text x="1080" y="365" class="box-title">server.js</text>
+  <text x="1080" y="397" class="box-copy">Node.js game API</text>
+  <text x="1080" y="420" class="detail">/api/game/* endpoints</text>
+
+  <rect x="1055" y="500" width="255" height="125" rx="16" fill="#34204f" stroke="#a47ac6" stroke-width="1.5"/>
+  <text x="1080" y="540" class="box-title">Account + game state</text>
+  <text x="1080" y="572" class="box-copy">Persistent SQLite storage</text>
+  <text x="1080" y="595" class="detail">Hashed login, sessions, wallet</text>
+
+  <path d="M925 348 H1055" class="line"/>
+  <path d="M1055 385 H975" class="line"/>
+  <text x="942" y="322" class="detail">JSON / fetch</text>
+  <path d="M1182 455 V500" class="line-muted"/>
+
+  <text x="70" y="780" class="subtitle" font-size="14">The browser never calculates paid outcomes. The frontend presents the result returned by the Node.js game API.</text>
+</svg>

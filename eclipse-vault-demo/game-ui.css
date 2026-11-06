@@ -1,0 +1,69 @@
+/* Overrides for state-driven feature UI and the primary spin control. */
+.totality-bar[hidden]{display:none!important}
+
+/* Dedicated full-screen arrival screen for a triggered Free Spins feature. */
+#bonusStartModal.bonus-entry-modal{position:fixed;inset:0;width:100vw;max-width:none;height:100dvh;max-height:none;margin:0;padding:clamp(28px,6vh,72px) 24px;overflow:hidden;border:0;border-radius:0;display:grid;place-content:center;text-align:center;background:radial-gradient(circle at 50% 42%,rgba(116,45,181,.55) 0,rgba(40,17,76,.76) 28%,rgba(7,7,18,.96) 66%),linear-gradient(135deg,#070611,#1a0c32 50%,#070611);box-shadow:none}
+#bonusStartModal.bonus-entry-modal::before{content:"";position:absolute;inset:-30%;background:repeating-radial-gradient(circle at 50% 48%,transparent 0 34px,rgba(204,118,255,.08) 35px 37px,transparent 39px 70px);animation:bonus-space-spin 18s linear infinite}
+#bonusStartModal.bonus-entry-modal>*{position:relative;z-index:1}
+#bonusStartModal .eyebrow{margin-top:22px;color:#f1c8ff;text-shadow:0 0 14px rgba(207,118,255,.92)}
+#bonusStartModal h2{margin:0 0 16px;font-size:clamp(32px,5vw,62px);letter-spacing:.055em;color:#fff4d6;text-shadow:0 0 20px rgba(220,129,255,.76),0 0 46px rgba(116,45,181,.72)}
+.bonus-portal{position:relative;width:clamp(190px,22vw,310px);aspect-ratio:1;margin:0 auto;display:grid;place-items:center;border-radius:50%;background:radial-gradient(circle,#19042b 14%,#7124b0 32%,rgba(198,98,255,.38) 45%,transparent 67%);filter:drop-shadow(0 0 32px rgba(194,80,255,.84));animation:bonus-portal-pulse 1.25s ease-in-out infinite}
+.bonus-portal img{position:relative;z-index:2;width:62%;height:62%;object-fit:contain;filter:drop-shadow(0 0 13px #f5a8ff) drop-shadow(0 0 30px #7b16df);animation:bonus-lightning-strike 1.05s steps(2,end) infinite}
+.portal-ring{position:absolute;inset:-7%;border:2px solid rgba(240,178,255,.78);border-radius:50%;box-shadow:0 0 18px rgba(201,85,255,.96),inset 0 0 18px rgba(201,85,255,.48)}
+.portal-ring::before,.portal-ring::after{content:"";position:absolute;width:18px;height:18px;border-radius:50%;background:#fff1a0;box-shadow:0 0 15px #f4baff}
+.portal-ring::before{top:5%;left:50%}.portal-ring::after{right:8%;bottom:10%}
+.portal-ring-outer{animation:bonus-orbit 5.5s linear infinite}.portal-ring-inner{inset:8%;border-style:dashed;border-color:#ffd268;animation:bonus-orbit 3.6s linear infinite reverse}
+#bonusStartModal .bonus-message{display:flex;align-items:center;justify-content:center;gap:12px;margin:0 0 14px!important;color:#fff;font-size:13px!important;font-weight:800;letter-spacing:.16em}
+#bonusStartModal .bonus-message strong{font-size:clamp(54px,8vw,92px);line-height:.8;color:#ffe27e;text-shadow:0 0 24px rgba(255,204,91,.8)}
+#bonusStartModal .bonus-message span{max-width:90px;text-align:left;line-height:1.12}
+.bonus-entry-copy{max-width:470px;margin:0 auto 24px!important;color:#ded5eb!important;font-size:13px!important}
+#bonusStartModal .primary-button{padding:16px 26px;background:linear-gradient(120deg,#f6dc83,#c276f2 48%,#7e2bc7);border-color:#fff0b9;box-shadow:0 0 0 2px rgba(255,236,167,.24),0 0 32px rgba(184,75,255,.62);font-size:12px}
+
+@keyframes bonus-space-spin{to{transform:rotate(360deg)}}
+@keyframes bonus-orbit{to{transform:rotate(360deg)}}
+@keyframes bonus-portal-pulse{50%{transform:scale(1.075);filter:drop-shadow(0 0 50px rgba(220,105,255,1))}}
+@keyframes bonus-lightning-strike{0%,100%{opacity:.76;transform:scale(.93)}50%{opacity:1;transform:scale(1.08)}}
+
+/* Fill the reel window while keeping every symbol in an equal square, invisible position. */
+.reel-frame{background:radial-gradient(ellipse at 50% 48%,rgba(101,50,165,.3) 0,rgba(42,22,73,.2) 35%,transparent 66%),linear-gradient(135deg,#080912 0%,#151026 48%,#090914 100%);border-color:rgba(194,139,255,.48);box-shadow:inset 0 0 34px rgba(89,43,157,.3),inset 0 0 0 3px #050509,0 16px 34px rgba(0,0,0,.42)}
+.eclipse-halo{display:none}
+.reels{grid-template-columns:repeat(5,minmax(0,1fr));justify-content:stretch}
+.symbol{width:100%;background:transparent;border:0;box-shadow:none;overflow:visible}
+.symbol img{width:var(--symbol-height);height:var(--symbol-height);max-width:84%;max-height:84%;object-fit:contain;object-position:center;display:block}
+.symbol.winning{border:0;background:transparent;box-shadow:none;animation:winning-symbol-pulse 1.05s ease-out both}
+
+.spin-button{
+  position:relative;
+  isolation:isolate;
+  width:126px;
+  height:126px;
+  justify-self:center;
+  overflow:hidden;
+  border:2px solid #ffe59b;
+  border-radius:50%;
+  background:radial-gradient(circle at 35% 26%,#fff5c4 0 5%,#f7d16b 21%,#c58a20 52%,#573608 76%,#171006 100%);
+  box-shadow:0 0 0 4px #21180a,0 0 0 7px rgba(244,195,68,.44),0 12px 30px rgba(0,0,0,.58),0 0 28px rgba(243,185,49,.46),inset 0 -12px 18px rgba(52,28,2,.42);
+  transition:transform .18s ease,filter .18s ease,box-shadow .18s ease;
+}
+.spin-button::before{content:"";position:absolute;inset:8px;border:1px solid rgba(78,45,3,.68);border-radius:50%;box-shadow:inset 0 0 0 2px rgba(255,239,163,.23)}
+.spin-button::after{content:"";position:absolute;inset:-36% 28% 42% -12%;border-radius:50%;background:rgba(255,255,255,.34);filter:blur(8px);transform:rotate(-24deg);pointer-events:none}
+.spin-button span,.spin-button small{position:relative;z-index:1;text-shadow:0 1px 0 rgba(255,247,196,.6)}
+.spin-button span{font-size:15px;letter-spacing:.2em}.spin-button small{font-size:8px;letter-spacing:.13em}
+.spin-button:hover:not(:disabled){transform:translateY(-3px) scale(1.035);filter:brightness(1.1);box-shadow:0 0 0 4px #21180a,0 0 0 7px rgba(255,224,125,.67),0 17px 34px rgba(0,0,0,.62),0 0 38px rgba(255,202,68,.73),inset 0 -12px 18px rgba(52,28,2,.32)}
+.spin-button:active:not(:disabled){transform:translateY(1px) scale(.98)}
+.spin-button:disabled{opacity:.52;box-shadow:0 0 0 4px #21180a,0 0 0 7px rgba(129,116,79,.3),inset 0 -12px 18px rgba(0,0,0,.45)}
+
+/* A short violet strike marks only the cells that form a paid line. */
+.symbol.winning{isolation:isolate;animation:winning-cell-pulse 1.05s ease-out both}
+.symbol.winning::before{content:"";position:absolute;z-index:2;top:-14%;left:19%;width:62%;height:132%;pointer-events:none;opacity:0;background:linear-gradient(90deg,transparent 0 35%,rgba(177,71,255,.78) 39%,#fff1ff 49%,rgba(179,66,255,.94) 57%,transparent 64%);clip-path:polygon(54% 0,76% 0,54% 25%,88% 25%,46% 49%,71% 49%,19% 100%,40% 64%,8% 64%,37% 37%,13% 37%);filter:drop-shadow(0 0 4px #be5cff) drop-shadow(0 0 11px rgba(175,62,255,.95));animation:violet-lightning 1.05s linear both}
+.symbol.winning::after{content:"";position:absolute;inset:-35%;z-index:1;pointer-events:none;opacity:0;background:radial-gradient(ellipse at 50% 50%,rgba(194,91,255,.48),transparent 57%);mix-blend-mode:screen;animation:violet-flash 1.05s ease-out both}
+.symbol.winning img{position:relative;z-index:1}
+
+@keyframes winning-cell-pulse{0%,100%{box-shadow:0 0 18px rgba(255,223,125,.52),inset 0 0 18px rgba(255,223,125,.2)}12%,24%{box-shadow:0 0 12px 4px rgba(198,84,255,.98),0 0 30px rgba(144,46,255,.85),inset 0 0 23px rgba(191,72,255,.45)}}
+@keyframes winning-symbol-pulse{0%,100%{filter:brightness(1)}12%,24%{filter:brightness(1.28) drop-shadow(0 0 11px rgba(193,87,255,.98))}}
+@keyframes violet-lightning{0%,8%,19%,100%{opacity:0;transform:translateY(-7%) scaleY(.7)}10%,15%{opacity:1;transform:translateY(0) scaleY(1)}21%,26%{opacity:.9;transform:translateY(1%) scaleY(.95)}}
+@keyframes violet-flash{0%,8%,19%,100%{opacity:0}11%,16%,22%,27%{opacity:1}}
+
+@media(prefers-reduced-motion:reduce){.symbol.winning,.symbol.winning::before,.symbol.winning::after{animation:none}.symbol.winning::before{display:none}.symbol.winning::after{opacity:.35}}
+
+@media(max-width:700px){.symbol img{width:var(--symbol-height);height:var(--symbol-height);max-width:84%;max-height:84%}.spin-button{width:86px;height:86px}.spin-button span{font-size:11px}.spin-button small{font-size:6px}}
